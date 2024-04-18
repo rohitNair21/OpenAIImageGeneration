@@ -1,13 +1,11 @@
 from openai import OpenAI
-
 client = OpenAI()
 
-response = client.images.generate(
-    model="dall-e-3",
-    prompt="a logo for a mental health app called MindFull", #EDIT PROMPT
-    size="1024x1024",
-    quality="standard",
-    n=1,
+response = client.images.create_variation(
+  model="dall-e-2",
+  image=open("image_path", "rb"), #EDIT PATH
+  n=1,
+  size="1024x1024"
 )
 
 image_url = response.data[0].url
